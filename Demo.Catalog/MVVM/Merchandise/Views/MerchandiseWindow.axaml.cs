@@ -17,6 +17,15 @@ namespace Demo.Catalog.MVVM.Merchandise.Views
 #endif
             Opened += MerchandiseWindow_Opened;
         }
+        public MerchandiseWindow(MerchandiseWindowViewModel viewModel)
+        {
+            InitializeComponent();
+#if DEBUG
+            this.AttachDevTools();
+#endif
+            _viewModel = viewModel;
+            DataContext = _viewModel;
+        }
 
         private void MerchandiseWindow_Opened(object? sender, System.EventArgs e)
         {

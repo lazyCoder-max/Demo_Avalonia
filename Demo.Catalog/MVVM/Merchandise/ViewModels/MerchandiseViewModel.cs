@@ -52,7 +52,16 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
         }
         void ShowOpenWindow()
         {
-
+            MerchandiseWindowViewModel viewModel = new MerchandiseWindowViewModel()
+            {
+                Model = SelectedItem
+            };
+            viewModel.RemoveDuplicateFile();
+            var window = new MerchandiseWindow(viewModel)
+            {
+                WindowStartupLocation = Avalonia.Controls.WindowStartupLocation.CenterScreen
+            };
+            window.Show();
         }
         #endregion
     }

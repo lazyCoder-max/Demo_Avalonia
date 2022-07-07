@@ -17,7 +17,7 @@ namespace Demo.Catalog.Extensibility
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(value!=null)
+            if(value!=null && !string.IsNullOrEmpty(value.ToString()))
                 value = new Bitmap(value.ToString());
             return value;
         }

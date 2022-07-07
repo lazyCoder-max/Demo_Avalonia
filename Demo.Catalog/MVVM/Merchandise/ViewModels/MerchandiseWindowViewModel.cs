@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Demo.Catalog.MVVM.Merchandise.ViewModels
 {
-    internal class MerchandiseWindowViewModel:ReactiveObject
+    public class MerchandiseWindowViewModel:ReactiveObject
     {
         #region Fields
         private ItemModel _model;
@@ -56,6 +56,14 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
             }
             else
                 Model.ImagePath = result[0];
+        }
+        public void RemoveDuplicateFile()
+        {
+           var records = Items.Where(x => x.Title == Model.Title && x.Description == Model.Description && x.Tags == Model.Tags && x.ImagePath == Model.ImagePath).FirstOrDefault();
+           if(records!=null)
+            {
+                Items.Remove(records);
+            }
         }
         #endregion
     }
