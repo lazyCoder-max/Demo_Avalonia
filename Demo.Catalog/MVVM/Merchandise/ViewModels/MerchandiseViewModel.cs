@@ -27,6 +27,7 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
         #region Commands
         public ReactiveCommand<Unit, Unit>? OpenCommand { get; set; }
         public ReactiveCommand<Unit, Unit>? CreateCommand { get; set; }
+        public ReactiveCommand<Unit, Unit>? DeleteCommand { get; set; }
         #endregion
 
         #region Methods
@@ -35,12 +36,22 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
             items = new List<ItemModel>();
             OpenCommand = ReactiveCommand.Create(ShowOpenWindow);
             CreateCommand = ReactiveCommand.Create(ShowCreateWindow);
+            DeleteCommand = ReactiveCommand.Create(DeleteRecord);
             serviceControl = new CsvHelperControl();
             var result = serviceControl.GetAllData();
             if(result.Count()>=1)
             {
                 Items = result.ToList();
             }
+        }
+        void DeleteRecord()
+        {
+            var records = Items.Where(x => x.Title == SelectedItem.Title && x.Description == SelectedItem.Description && x.Tags == SelectedItem.Tags && x.ImagePath == SelectedItem.ImagePath).FirstOrDefault();
+            if (records != null)
+            {
+                Items.Remove(records);
+            }
+            serviceControl.SaveCsvFile(Items);
         }
         void ShowCreateWindow()
         {

@@ -26,6 +26,12 @@
 					<Button DockPanel.Dock="Right"
                             Background="Transparent"
                             BorderThickness="1"
+							Content="Delete"
+							Command="{Binding DeleteCommand}"
+							/>
+					<Button DockPanel.Dock="Right"
+                            Background="Transparent"
+                            BorderThickness="1"
 							Content="Open"
 							Command="{Binding OpenCommand}"
 							/>
