@@ -2,9 +2,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:ext="using:Demo.Catalog.Extensibility"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:Demo.Catalog.MVVM.Merchandise.ViewModels"
 			 x:Class="Demo.Catalog.MVVM.Merchandise.Views.MerchandiseView">
+	<UserControl.Resources>
+		<ext:BitmapValueConverter x:Key="variableImage"/>
+	</UserControl.Resources>
 	<Grid x:Name="LayoutRoot">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="3*" />
@@ -32,15 +36,17 @@
 							Command="{Binding CreateCommand}"
 							/>
 				</DockPanel>
-				<DataGrid Name="DataGrid1" Items="{Binding MerchandiseDto}" 
+				<DataGrid Name="DataGrid1" Items="{Binding Items}" 
 						  AutoGenerateColumns="False"
 						  Margin="10,10,10,10"
+						  SelectionMode="Single"
+						  SelectedItem="{Binding SelectedItem}"
 						  >
 					<DataGrid.Columns>
-						<DataGridTextColumn Header="Title"  Binding="{Binding Title}" Width="*"/>
-						<DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*" />
-						<DataGridTextColumn Header="Tags"  Binding="{Binding Tags}" Width="*"/>
-						<DataGridTextColumn Header="Poster Path" Binding="{Binding Description}" Width="*" />
+						<DataGridTextColumn Header="Title"  Binding="{Binding Title}" Width="*" IsReadOnly="True"/>
+						<DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*" IsReadOnly="True"/>
+						<DataGridTextColumn Header="Tags"  Binding="{Binding Tags}" Width="*" IsReadOnly="True"/>
+						<DataGridTextColumn Header="Poster Path" Binding="{Binding ImagePath}" Width="*" IsReadOnly="True"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</DockPanel>
@@ -49,13 +55,13 @@
 			<StackPanel>
 				<TextBlock Text="Preview" Margin="0,0,0,5"/>
 				<Label Content="Title" />
-				<TextBox IsReadOnly="True" Text=""/>
+				<TextBox IsReadOnly="True" Text="{Binding SelectedItem.Title}"/>
 				<Label Content="Description" />
-				<TextBox IsReadOnly="True" Text=""/>
+				<TextBox IsReadOnly="True" Text="{Binding SelectedItem.Description}"/>
 				<Label Content="Tags" />
-				<TextBox IsReadOnly="True" Text=""/>
+				<TextBox IsReadOnly="True" Text="{Binding SelectedItem.Tags}"/>
 				<Label Content="Poster" />
-				<Image/>
+				<Image Source="{Binding SelectedItem.ImagePath,Converter={StaticResource variableImage}}"/>
 			</StackPanel>
 		</Border>
 	</Grid>

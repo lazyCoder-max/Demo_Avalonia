@@ -11,8 +11,9 @@ namespace Demo.Catalog.Services
 {
     public class CsvHelperControl
     {
-        public IEnumerable<ItemModel> GetAllData()
+        public List<ItemModel> GetAllData()
         {
+            List<ItemModel> datas = new List<ItemModel>();
             if (File.Exists($"{Directory.GetCurrentDirectory()}/itemData.csv"))
             {
                 using (var streamReader = new StreamReader($"{Directory.GetCurrentDirectory()}/itemData.csv"))
@@ -21,7 +22,8 @@ namespace Demo.Catalog.Services
                     {
                         csvReader.Context.RegisterClassMap<ItemModelClassMap>();
                         var records = csvReader.GetRecords<ItemModel>();
-                        return records;
+                        datas.AddRange(records);
+                        return datas;
                     }
                 }
             }
