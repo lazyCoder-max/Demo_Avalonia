@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:ext="using:Demo.Catalog.Extensibility"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 		Height="650" 
         Width="850"
@@ -9,6 +10,9 @@
         Title="MerchandiseWindow"
 		CanResize="False"
 		>
+	<Window.Resources>
+		<ext:BitmapValueConverter x:Key="variableImage"/>
+	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40"/>
@@ -52,9 +56,14 @@
 						<TextBox Grid.Row="5" Grid.Column="0" Text="{Binding Model.Tags}" Grid.ColumnSpan="2"/>
 						<TextBox Grid.Row="7" Grid.Column="0" Text="{Binding Model.ImagePath, Mode=TwoWay}" Grid.ColumnSpan="2" IsReadOnly="True"/>
 						<Button Content="..." Grid.Row="8" Margin="0,5,5,5" Click="Button_Click"/>
+						<Image Source="{Binding Model.ImagePath,Converter={StaticResource variableImage}}" Grid.Row="2" Grid.Column="2" Grid.RowSpan="8"/>
 					</Grid>
 				</Grid>
 			</Grid>
 		</Border>
+		<StackPanel Grid.Row="2" Margin="30,0,0,0"
+					Orientation="Horizontal">
+			<Button Content="Save Data" Background="#4169E1" Foreground="White"/>
+		</StackPanel>
 	</Grid>
 </Window>
