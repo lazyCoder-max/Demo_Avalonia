@@ -3,8 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:ext="using:Demo.Catalog.Extensibility"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-		Height="650" 
+        mc:Ignorable="d" d:DesignWidth="850" d:DesignHeight="390"
+		Height="390" 
         Width="850"
         x:Class="Demo.Catalog.MVVM.Merchandise.Views.MerchandiseWindow"
         Title="MerchandiseWindow"
@@ -56,8 +56,8 @@
 						<TextBox Grid.Row="5" Grid.Column="0" Text="{Binding Model.Tags}" Grid.ColumnSpan="2"/>
 						<TextBox Grid.Row="7" Grid.Column="0" Text="{Binding Model.ImagePath, Mode=TwoWay}" Grid.ColumnSpan="2" IsReadOnly="True"/>
 						<Button Content="..." Grid.Row="8" Margin="0,5,5,5" Click="Button_Click"/>
-						<Image Source="{Binding Model.ImagePath,Converter={StaticResource variableImage}}" Grid.Row="2" Grid.Column="2" Grid.RowSpan="8"/>
 					</Grid>
+					<Image Source="{Binding Model.ImagePath,Converter={StaticResource variableImage}}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="8" Margin="2,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
 				</Grid>
 			</Grid>
 		</Border>
