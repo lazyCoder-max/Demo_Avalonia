@@ -44,12 +44,16 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
         }
         void DeleteRecord()
         {
-            var records = Items.Where(x => x.Title == SelectedItem.Title && x.Description == SelectedItem.Description && x.Tags == SelectedItem.Tags && x.ImagePath == SelectedItem.ImagePath).FirstOrDefault();
-            if (records != null)
+            if(SelectedItem!=null)
             {
-                Items.Remove(records);
+                var records = Items.Where(x => x.Title == SelectedItem.Title && x.Description == SelectedItem.Description && x.Tags == SelectedItem.Tags && x.ImagePath == SelectedItem.ImagePath).FirstOrDefault();
+                if (records != null)
+                {
+                    Items.Remove(records);
+                }
+                serviceControl.SaveCsvFile(Items);
             }
-            serviceControl.SaveCsvFile(Items);
+            
         }
         void ShowCreateWindow()
         {
