@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using Demo.Catalog.MVVM.Merchandise.Models;
 using Demo.Catalog.MVVM.Merchandise.Views;
+using Demo.Catalog.Services;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
     {
         #region Fields
         private ItemModel _model;
+        private CsvHelperControl serviceControl;
         #endregion
 
         #region Properties
         public ItemModel Model { get=> _model; set=>this.RaiseAndSetIfChanged(ref _model,value); }
+        public List<ItemModel> Items { get; set; }
         #endregion
 
         #region Commands
@@ -30,10 +33,13 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
         {
             _model = new ItemModel();
             SaveCommand = ReactiveCommand.Create(SaveData);
+            serviceControl = new CsvHelperControl();
+            Items = serviceControl.GetAllData().ToList();
         }
         private void SaveData()
         {
-
+            Items.Add(Model);
+            serviceControl.SaveCsvFile(Items);
         }
         public async Task OpenFileDialog(object sender)
         {
