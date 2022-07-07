@@ -1,0 +1,17 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Demo.Catalog"
+             x:Class="Demo.Catalog.App"
+			 xmlns:merchandiseViewModel="using:Demo.Catalog.MVVM.Merchandise.ViewModels"
+			 xmlns:merchandiseView="using:Demo.Catalog.MVVM.Merchandise.Views">
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+		<DataTemplate DataType="{x:Type merchandiseViewModel:MerchandiseViewModel}">
+			<merchandiseView:MerchandiseView/>
+		</DataTemplate>
+    </Application.DataTemplates>
+    <Application.Styles>
+		<FluentTheme Mode="Light" />
+		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+    </Application.Styles>
+</Application>

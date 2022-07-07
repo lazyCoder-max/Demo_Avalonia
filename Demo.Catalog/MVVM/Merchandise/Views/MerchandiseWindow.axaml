@@ -1,0 +1,60 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		Height="650" 
+        Width="850"
+        x:Class="Demo.Catalog.MVVM.Merchandise.Views.MerchandiseWindow"
+        Title="MerchandiseWindow"
+		CanResize="False"
+		>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="50"/>
+		</Grid.RowDefinitions>
+		<TextBlock FontSize="18" FontWeight="Bold" Text="Merchandise - Item" Grid.Row="0" Padding="10"/>
+		<Border Grid.Row="1" Margin="15,0,15,15">
+			<Grid Margin="30,0,0,0">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="203*"/>
+						<ColumnDefinition Width="102*"/>
+						<ColumnDefinition Width="82*"/>
+					</Grid.ColumnDefinitions>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+						<Label Grid.Row="0" Content="Title"  FontSize="15" Height="23" />
+						<Label Grid.Row="2" Content="Description"  FontSize="15" Height="23" />
+						<Label Grid.Row="4" Content="Tags"  FontSize="15" Height="23" />
+						<Label Grid.Row="6" Content="Poster image path"  FontSize="15" Height="23" />
+						<TextBox Grid.Row="1" Grid.Column="0" Text="" Grid.ColumnSpan="2"/>
+						<TextBox Grid.Row="3" Grid.Column="0" Text="" Grid.ColumnSpan="2"/>
+						<TextBox Grid.Row="5" Grid.Column="0" Text="" Grid.ColumnSpan="2"/>
+						<TextBox Grid.Row="7" Grid.Column="0" Text="" Grid.ColumnSpan="2" IsReadOnly="True"/>
+						<Button Content="..." Grid.Row="8" Margin="0,5,5,5" Click="Button_Click"/>
+					</Grid>
+				</Grid>
+			</Grid>
+		</Border>
+	</Grid>
+</Window>
