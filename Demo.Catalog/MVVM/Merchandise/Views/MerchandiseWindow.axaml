@@ -63,7 +63,7 @@
 		</Border>
 		<StackPanel Grid.Row="2" Margin="30,0,0,0"
 					Orientation="Horizontal">
-			<Button Content="Save Data" Background="#4169E1" Foreground="White"/>
+			<Button Content="Save Data" Command="{Binding SaveCommand}" Background="#4169E1" Foreground="White"/>
 		</StackPanel>
 	</Grid>
 </Window>

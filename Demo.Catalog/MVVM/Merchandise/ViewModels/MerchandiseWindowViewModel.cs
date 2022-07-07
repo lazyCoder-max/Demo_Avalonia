@@ -23,12 +23,18 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
         #endregion
 
         #region Commands
+        public ReactiveCommand<Unit,Unit>? SaveCommand { get; set; }
         #endregion
 
         #region Methods
         public MerchandiseWindowViewModel()
         {
             _model = new ItemModel();
+            SaveCommand = ReactiveCommand.Create(SaveData);
+        }
+        private void SaveData()
+        {
+
         }
         public async Task OpenFileDialog(object sender)
         {
