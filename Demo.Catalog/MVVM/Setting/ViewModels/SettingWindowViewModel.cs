@@ -30,6 +30,7 @@ namespace Demo.Catalog.MVVM.Setting.ViewModels
         {
             _model = new ItemSettingModel();
             serviceControl = new CsvHelperControl();
+            Model = serviceControl.GetSetting();
             SaveCommand = ReactiveCommand.Create(SaveData);
         }
         private void SaveData()
