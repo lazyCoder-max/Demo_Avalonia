@@ -66,7 +66,7 @@ namespace Demo.Catalog.Services
             else
                 throw new FileNotFoundException("CSV File Not Found");
         }
-        public void SaveSetting(List<ItemSettingModel> itemModels)
+        public void SaveSetting(ItemSettingModel itemModel)
         {
             using (var streamWriter = new StreamWriter($"{Directory.GetCurrentDirectory()}/settings.csv"))
             {
@@ -74,11 +74,8 @@ namespace Demo.Catalog.Services
                 {
                     csvWriter.WriteHeader<ItemSettingModel>();
                     csvWriter.NextRecord();
-                    foreach (var record in itemModels)
-                    {
-                        csvWriter.WriteRecord(record);
-                        csvWriter.NextRecord();
-                    }
+                    csvWriter.WriteRecord(itemModel);
+                    csvWriter.NextRecord();
                 }
             }
         }

@@ -2,8 +2,61 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="850" d:DesignHeight="390"
         x:Class="Demo.Catalog.MVVM.Setting.Views.SettingWindow"
-        Title="SettingWindow">
-  Welcome to Avalonia!
+        
+		Height="390"
+        Width="850"
+		Title="SettingWindow">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="50"/>
+		</Grid.RowDefinitions>
+		<TextBlock FontSize="18" FontWeight="Bold" Text="Settings - Marchandise" Grid.Row="0" Padding="10"/>
+		<Border Grid.Row="1" Margin="15,0,15,15">
+			<Grid Margin="30,0,0,0">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="203*"/>
+						<ColumnDefinition Width="102*"/>
+						<ColumnDefinition Width="82*"/>
+					</Grid.ColumnDefinitions>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+						<Label Grid.Row="0" Content="Title Max. Length"  FontSize="15" Height="23" />
+						<Label Grid.Row="2" Content="Description Max. Length"  FontSize="15" Height="23" />
+						<Label Grid.Row="4" Content="Tags Max. Length"  FontSize="15" Height="23" />
+						<Label Grid.Row="6" Content="Poster image path Max. Length"  FontSize="15" Height="23" />
+						<TextBox Grid.Row="1"  Grid.Column="0" Text="{Binding Model.TitleLength}" Grid.ColumnSpan="2"/>
+						<TextBox Grid.Row="3"  Grid.Column="0" Text="{Binding Model.DescriptionLength}" Grid.ColumnSpan="2"/>
+						<TextBox Grid.Row="5"  Grid.Column="0" Text="{Binding Model.TagsLength}" Grid.ColumnSpan="2"/>
+						<TextBox Grid.Row="7"  Grid.Column="0" Text="{Binding Model.ImagePathLength, Mode=TwoWay}" Grid.ColumnSpan="2" IsReadOnly="True"/>
+					</Grid>
+				</Grid>
+			</Grid>
+		</Border>
+		<StackPanel Grid.Row="2" Margin="30,0,0,0"
+					Orientation="Horizontal">
+			<Button Content="Save Data" Command="{Binding SaveCommand}" Background="#4169E1" Foreground="White"/>
+		</StackPanel>
+	</Grid>
 </Window>
