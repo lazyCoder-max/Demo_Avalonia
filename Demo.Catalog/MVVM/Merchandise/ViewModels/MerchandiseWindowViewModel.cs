@@ -63,11 +63,15 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
         }
         public void RemoveDuplicateFile()
         {
-           var records = Items.Where(x => x.Title == Model.Title && x.Description == Model.Description && x.Tags == Model.Tags && x.ImagePath == Model.ImagePath).FirstOrDefault();
-           if(records!=null)
+            if(Model!= null)
             {
-                Items.Remove(records);
+                var records = Items.Where(x => x.Title == Model.Title && x.Description == Model.Description && x.Tags == Model.Tags && x.ImagePath == Model.ImagePath).FirstOrDefault();
+                if (records != null)
+                {
+                    Items.Remove(records);
+                }
             }
+           
         }
         #endregion
     }
