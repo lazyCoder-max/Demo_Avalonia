@@ -47,10 +47,10 @@
 						<Label Grid.Row="2" Content="Description"  FontSize="15" Height="23" />
 						<Label Grid.Row="4" Content="Tags"  FontSize="15" Height="23" />
 						<Label Grid.Row="6" Content="Poster image path"  FontSize="15" Height="23" />
-						<TextBox Grid.Row="1" Grid.Column="0" Text="" Grid.ColumnSpan="2"/>
-						<TextBox Grid.Row="3" Grid.Column="0" Text="" Grid.ColumnSpan="2"/>
-						<TextBox Grid.Row="5" Grid.Column="0" Text="" Grid.ColumnSpan="2"/>
-						<TextBox Grid.Row="7" Grid.Column="0" Text="" Grid.ColumnSpan="2" IsReadOnly="True"/>
+						<TextBox Grid.Row="1" Grid.Column="0" Text="{Binding Model.Title}" Grid.ColumnSpan="2"/>
+						<TextBox Grid.Row="3" Grid.Column="0" Text="{Binding Model.Description}" Grid.ColumnSpan="2"/>
+						<TextBox Grid.Row="5" Grid.Column="0" Text="{Binding Model.Tags}" Grid.ColumnSpan="2"/>
+						<TextBox Grid.Row="7" Grid.Column="0" Text="{Binding Model.ImagePath}" Grid.ColumnSpan="2" IsReadOnly="True"/>
 						<Button Content="..." Grid.Row="8" Margin="0,5,5,5" Click="Button_Click"/>
 					</Grid>
 				</Grid>

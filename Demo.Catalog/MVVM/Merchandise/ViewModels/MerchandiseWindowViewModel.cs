@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Demo.Catalog.MVVM.Merchandise.Models;
 using Demo.Catalog.MVVM.Merchandise.Views;
 using ReactiveUI;
 using System;
@@ -13,11 +14,11 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
     internal class MerchandiseWindowViewModel:ReactiveObject
     {
         #region Fields
-
+        private ItemModel _model = new ItemModel();
         #endregion
 
         #region Properties
-
+        public ItemModel Model { get=> _model; set=>this.RaiseAndSetIfChanged(ref _model,value); }
         #endregion
 
         #region Commands
@@ -40,6 +41,8 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
             {
                 await OpenFileDialog(sender);
             }
+            else
+                Model.ImagePath = result[0];
         }
         #endregion
     }

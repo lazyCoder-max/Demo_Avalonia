@@ -9,7 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
-    <Folder Include="MVVM\Merchandise\Models\" />
     <Folder Include="MVVM\Setting\Models\" />
     <None Remove=".gitignore" />
   </ItemGroup>
