@@ -19,7 +19,6 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
 
         #region Properties
         public ItemModel Model { get=> _model; set=>this.RaiseAndSetIfChanged(ref _model,value); }
-        public string Path { get; set; }
         #endregion
 
         #region Commands
