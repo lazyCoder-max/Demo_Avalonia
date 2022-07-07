@@ -46,5 +46,41 @@ namespace Demo.Catalog.Services
                 }
             }
         }
+
+        public ItemSettingModel GetSetting()
+        {
+            ItemSettingModel datas = new ItemSettingModel();
+            if (File.Exists($"{Directory.GetCurrentDirectory()}/settings.csv"))
+            {
+                using (var streamReader = new StreamReader($"{Directory.GetCurrentDirectory()}/settings.csv"))
+                {
+                    using (var csvReader = new CsvHelper.CsvReader(streamReader, CultureInfo.InvariantCulture))
+                    {
+                        csvReader.Context.RegisterClassMap<ItemSettingModelClassMap>();
+                        var records = csvReader.GetRecords<ItemSettingModel>().FirstOrDefault();
+                        datas = records;
+                        return datas;
+                    }
+                }
+            }
+            else
+                throw new FileNotFoundException("CSV File Not Found");
+        }
+        public void SaveSetting(List<ItemSettingModel> itemModels)
+        {
+            using (var streamWriter = new StreamWriter($"{Directory.GetCurrentDirectory()}/settings.csv"))
+            {
+                using (var csvWriter = new CsvHelper.CsvWriter(streamWriter, CultureInfo.InvariantCulture))
+                {
+                    csvWriter.WriteHeader<ItemSettingModel>();
+                    csvWriter.NextRecord();
+                    foreach (var record in itemModels)
+                    {
+                        csvWriter.WriteRecord(record);
+                        csvWriter.NextRecord();
+                    }
+                }
+            }
+        }
     }
 }

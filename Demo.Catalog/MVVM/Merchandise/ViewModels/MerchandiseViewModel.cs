@@ -14,7 +14,7 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
     public class MerchandiseViewModel:ReactiveObject
     {
         #region Fields
-        public List<ItemModel> items;
+        private List<ItemModel> items;
         private ItemModel selectedItem;
         private CsvHelperControl serviceControl;
         #endregion
@@ -40,9 +40,7 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
             serviceControl = new CsvHelperControl();
             var result = serviceControl.GetAllData();
             if(result.Count()>=1)
-            {
                 Items = result.ToList();
-            }
         }
         void DeleteRecord()
         {

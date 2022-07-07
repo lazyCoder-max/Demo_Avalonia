@@ -15,6 +15,7 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
     public class MerchandiseWindowViewModel:ReactiveObject
     {
         #region Fields
+        private ItemSettingModel setting;
         private ItemModel _model;
         private CsvHelperControl serviceControl;
         #endregion
@@ -22,6 +23,7 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
         #region Properties
         public ItemModel Model { get=> _model; set=>this.RaiseAndSetIfChanged(ref _model,value); }
         public List<ItemModel> Items { get; set; }
+        public ItemSettingModel Setting { get => setting; set => this.RaiseAndSetIfChanged(ref setting, value); }
         #endregion
 
         #region Commands
@@ -35,6 +37,8 @@ namespace Demo.Catalog.MVVM.Merchandise.ViewModels
             SaveCommand = ReactiveCommand.Create(SaveData);
             serviceControl = new CsvHelperControl();
             Items = serviceControl.GetAllData().ToList();
+            var settingModel = serviceControl.GetSetting();
+            Setting = settingModel;
         }
         private void SaveData()
         {
